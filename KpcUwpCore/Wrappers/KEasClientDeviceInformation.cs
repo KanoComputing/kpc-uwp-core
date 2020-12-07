@@ -9,7 +9,7 @@
 using Windows.Security.ExchangeActiveSyncProvisioning;
 
 
-namespace KanoComputing.Wrappers {
+namespace KanoComputing.KpcUwpCore.Wrappers {
 
     /// <summary>
     /// Testable wrapper for Windows.Security.ExchangeActiveSyncProvisioning.EasClientDeviceInformation.

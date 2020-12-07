@@ -6,7 +6,7 @@
  */
 
 
-namespace KanoComputing.Wrappers {
+namespace KanoComputing.KpcUwpCore.Wrappers {
 
     public interface IKEasClientDeviceInformation {
 

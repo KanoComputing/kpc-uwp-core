@@ -6,7 +6,7 @@
  */
 
 
-namespace KanoComputing.Network {
+namespace KanoComputing.KpcUwpCore.Network {
 
     public interface INetworkStatus {
 

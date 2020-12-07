@@ -6,7 +6,7 @@
  */
 
 
-namespace KanoComputing.PlatformDetection {
+namespace KanoComputing.KpcUwpCore.PlatformDetection {
 
     public interface IKanoPlatformDetector {
 

@@ -9,7 +9,7 @@
 using System.Threading.Tasks;
 
 
-namespace KanoComputing.AppUpdate {
+namespace KanoComputing.KpcUwpCore.AppUpdate {
 
     public interface IAppUpdater {
 

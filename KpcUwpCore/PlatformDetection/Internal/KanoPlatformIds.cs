@@ -9,7 +9,7 @@
 using System.Collections.Generic;
 
 
-namespace KanoComputing.PlatformDetection.Internal {
+namespace KanoComputing.KpcUwpCore.PlatformDetection.Internal {
 
     public static class KanoPlatformIds {
 

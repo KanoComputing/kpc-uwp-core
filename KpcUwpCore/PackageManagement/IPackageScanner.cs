@@ -10,7 +10,7 @@ using System;
 using System.Threading.Tasks;
 
 
-namespace KanoComputing.PackageManagement {
+namespace KanoComputing.KpcUwpCore.PackageManagement {
 
     public interface IPackageScanner {
 

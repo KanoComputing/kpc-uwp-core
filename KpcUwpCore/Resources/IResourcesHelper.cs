@@ -9,7 +9,7 @@
 using Windows.ApplicationModel.Resources;
 
 
-namespace KanoComputing.Resources {
+namespace KanoComputing.KpcUwpCore.Resources {
 
     public interface IResourcesHelper {
 

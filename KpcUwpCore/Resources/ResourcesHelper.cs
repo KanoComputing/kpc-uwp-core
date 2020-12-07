@@ -12,7 +12,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.UI.Core;
 
 
-namespace KanoComputing.Resources {
+namespace KanoComputing.KpcUwpCore.Resources {
 
     public class ResourcesHelper : IResourcesHelper {
 

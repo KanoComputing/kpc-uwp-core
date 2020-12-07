@@ -9,7 +9,7 @@
 using Windows.Foundation;
 
 
-namespace KanoComputing.Display {
+namespace KanoComputing.KpcUwpCore.Display {
 
     public interface IWindowManager {
 

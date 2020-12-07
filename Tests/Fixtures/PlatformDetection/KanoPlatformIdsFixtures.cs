@@ -6,13 +6,13 @@
  */
 
 
-using KanoComputing.PlatformDetection;
-using KanoComputing.PlatformDetection.Internal;
+using KanoComputing.KpcUwpCore.PlatformDetection;
+using KanoComputing.KpcUwpCore.PlatformDetection.Internal;
 using System.Collections.Generic;
 using System.Linq;
 
 
-namespace KanoComputing.Tests.Fixtures.PlatformDetection {
+namespace KanoComputing.KpcUwpCore.Tests.Fixtures.PlatformDetection {
 
     public class KanoPlatformIdsFixtures {
 
