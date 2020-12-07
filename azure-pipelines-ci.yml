@@ -17,7 +17,7 @@ pr:
 
 variables:
   major: 3
-  minor: 0
+  minor: 1
   patch: $[counter(format('{0}.{1}', variables['major'], variables['minor']), 0)]
 
 # Customise the Build.BuildNumber variable with the version of the build.
@@ -50,3 +50,10 @@ stages:
     - template: steps/build-nuget-package.yml@templates
       parameters:
         projectName: 'KpcUwpCore'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish WinRT NuGet build artifacts'
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)\KpcUwpCoreWinRT\bin\Release\Package'
+        ArtifactName: 'KpcUwpCoreWinRT'
+        publishLocation: 'Container'
