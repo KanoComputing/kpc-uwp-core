@@ -6,7 +6,7 @@
  */
 
 
-namespace KanoComputing.Assets {
+namespace KanoComputing.KpcUwpCore.Assets {
 
     /// <summary>
     /// ResourceMap identifiers for resources contained within this library.

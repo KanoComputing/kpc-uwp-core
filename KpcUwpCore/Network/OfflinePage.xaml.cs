@@ -15,7 +15,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 
-namespace KanoComputing.Network {
+namespace KanoComputing.KpcUwpCore.Network {
 
     /// <summary>
     /// This page informs users that the app requires an Internet connection

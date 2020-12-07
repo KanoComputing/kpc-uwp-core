@@ -6,12 +6,12 @@
  */
 
 
-using KanoComputing.Wrappers;
+using KanoComputing.KpcUwpCore.Wrappers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 
 
-namespace KanoComputing.Tests.Unit.Wrappers {
+namespace KanoComputing.KpcUwpCore.Tests.Unit.Wrappers {
 
     [TestClass]
     public class TestKEasClientDeviceInformation {

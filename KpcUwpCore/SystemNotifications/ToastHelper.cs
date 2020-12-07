@@ -10,7 +10,7 @@ using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 
 
-namespace KanoComputing.SystemNotifications {
+namespace KanoComputing.KpcUwpCore.SystemNotifications {
 
     public class ToastHelper {
 

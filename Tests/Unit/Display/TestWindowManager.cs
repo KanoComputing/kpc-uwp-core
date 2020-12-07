@@ -6,14 +6,14 @@
  */
 
 
-using KanoComputing.Display;
+using KanoComputing.KpcUwpCore.Display;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
 using Windows.Foundation;
 
 
-namespace KanoComputing.Tests.Unit.Display {
+namespace KanoComputing.KpcUwpCore.Tests.Unit.Display {
 
     [TestClass]
     public class TestWindowManager {

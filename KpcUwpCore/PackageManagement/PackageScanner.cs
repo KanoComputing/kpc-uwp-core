@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Windows.System;
 
 
-namespace KanoComputing.PackageManagement {
+namespace KanoComputing.KpcUwpCore.PackageManagement {
 
     public class PackageScanner : IPackageScanner {
 

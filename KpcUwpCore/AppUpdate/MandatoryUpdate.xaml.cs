@@ -6,7 +6,7 @@
  */
 
 
-using KanoComputing.Network;
+using KanoComputing.KpcUwpCore.Network;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,7 +21,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 
-namespace KanoComputing.AppUpdate {
+namespace KanoComputing.KpcUwpCore.AppUpdate {
 
     /// <summary>
     /// This page informs users that the app requires a mandatory update and

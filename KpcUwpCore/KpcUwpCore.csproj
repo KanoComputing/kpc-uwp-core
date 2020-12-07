@@ -7,7 +7,7 @@
     <ProjectGuid>{51D7CAF5-B40B-4D63-85BB-2A3A18EEDA42}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KanoComputing</RootNamespace>
+    <RootNamespace>KanoComputing.KpcUwpCore</RootNamespace>
     <AssemblyName>KpcUwpCore</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>

@@ -6,11 +6,11 @@
  */
 
 
-using KanoComputing.Wrappers;
+using KanoComputing.KpcUwpCore.Wrappers;
 using Windows.Networking.Connectivity;
 
 
-namespace KanoComputing.Network {
+namespace KanoComputing.KpcUwpCore.Network {
 
     public class NetworkStatus : INetworkStatus {
 

@@ -9,10 +9,10 @@
 using Windows.Networking.Connectivity;
 
 
-namespace KanoComputing.Wrappers {
+namespace KanoComputing.KpcUwpCore.Wrappers {
 
     public class KNetworkInformation : IKNetworkInformation {
-        
+
         public IKConnectionProfile GetInternetConnectionProfile() {
             ConnectionProfile profile = NetworkInformation.GetInternetConnectionProfile();
             return profile == null ? null : new KConnectionProfile(profile);

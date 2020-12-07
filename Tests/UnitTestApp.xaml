@@ -7,9 +7,9 @@
 
 
 <Application
-    x:Class="KanoComputing.Tests.App"
+    x:Class="KanoComputing.KpcUwpCore.Tests.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Tests">
+    xmlns:local="using:KanoComputing.KpcUwpCore.Tests">
 
 </Application>

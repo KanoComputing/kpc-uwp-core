@@ -6,11 +6,11 @@
  */
 
 
-using KanoComputing.PlatformDetection.Internal;
-using KanoComputing.Wrappers;
+using KanoComputing.KpcUwpCore.PlatformDetection.Internal;
+using KanoComputing.KpcUwpCore.Wrappers;
 
 
-namespace KanoComputing.PlatformDetection {
+namespace KanoComputing.KpcUwpCore.PlatformDetection {
 
     public class KanoPlatformDetector : IKanoPlatformDetector {
 

@@ -6,13 +6,13 @@
  */
 
 
-using KanoComputing.Assets;
+using KanoComputing.KpcUwpCore.Assets;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Windows.ApplicationModel.Resources.Core;
 
 
-namespace KanoComputing.Tests.Fixtures.Resources {
+namespace KanoComputing.KpcUwpCore.Tests.Fixtures.Resources {
 
     public class ResourcesFixtures {
 

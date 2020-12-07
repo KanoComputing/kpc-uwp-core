@@ -10,7 +10,7 @@ using System;
 using Windows.Networking.Connectivity;
 
 
-namespace KanoComputing.Wrappers {
+namespace KanoComputing.KpcUwpCore.Wrappers {
 
     public class KConnectionProfile : IKConnectionProfile {
 

@@ -13,7 +13,7 @@ using Windows.Graphics.Display;
 using Windows.UI.ViewManagement;
 
 
-namespace KanoComputing.Display {
+namespace KanoComputing.KpcUwpCore.Display {
 
     public class WindowManager : IWindowManager {
 
