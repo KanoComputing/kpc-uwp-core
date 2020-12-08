@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using Windows.Networking.Connectivity;
 
 
-namespace KanoComputing.KpcUwpCore.Tests.Fixtures.Network {
+namespace KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Network {
 
     public class NetworkStatusFixtures {
 
