@@ -67,7 +67,11 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection.Internal {
                 // The seventh version of the PC switched back to Home in S mode
                 // for Retail markets specifically with a revised naming scheme.
                 // Windows 10 Home S mode v2004.
-                {"KPC2010HS", KanoPcSku.KPC2010HS}
+                {"KPC2010HS", KanoPcSku.KPC2010HS},
+
+                // The eighth version of the PC re-introduced the separation of
+                // market SKUs using Windows 10 Pro v2004 for Education.
+                {"KPC2011P", KanoPcSku.KPC2011P}
             };
 
         public static bool IsKanoPcSkuValid(string skuId) {

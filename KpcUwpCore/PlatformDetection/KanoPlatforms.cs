@@ -21,6 +21,7 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
         KPC2005 = 4,
         KPC2007JA = 5,
         KPC2007 = 6,
-        KPC2010HS = 7
+        KPC2010HS = 7,
+        KPC2011P = 8
     }
 }
