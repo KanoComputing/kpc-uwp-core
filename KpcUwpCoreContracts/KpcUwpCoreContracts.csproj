@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{51D7CAF5-B40B-4D63-85BB-2A3A18EEDA42}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{7884CC20-26BC-4DD1-8D11-2D9C2D10719F}</ProjectGuid>
+    <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KanoComputing.KpcUwpCore</RootNamespace>
-    <AssemblyName>KpcUwpCore</AssemblyName>
+    <RootNamespace>KanoComputing.KpcUwpCore.Contracts</RootNamespace>
+    <AssemblyName>KpcUwpCoreContracts</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
@@ -16,6 +16,7 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <AllowCrossPlatformRetargeting>false</AllowCrossPlatformRetargeting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -119,101 +120,19 @@
   <PropertyGroup>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
-  <PropertyGroup Label="MultilingualAppToolkit">
-    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
-    <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
-    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
-    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
-  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppUpdate\AppUpdater.cs" />
-    <Compile Include="AppUpdate\IAppUpdater.cs" />
-    <Compile Include="AppUpdate\MandatoryUpdate.xaml.cs">
-      <DependentUpon>MandatoryUpdate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Assets\Internal\ResourceMapIds.cs" />
-    <Compile Include="Network\INetworkStatus.cs" />
-    <Compile Include="Network\NetworkStatus.cs" />
-    <Compile Include="Network\OfflinePage.xaml.cs">
-      <DependentUpon>OfflinePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PackageManagement\IPackageScanner.cs" />
-    <Compile Include="PackageManagement\PackageScanner.cs" />
-    <Compile Include="PlatformDetection\IKanoPlatformDetector.cs" />
-    <Compile Include="PlatformDetection\Internal\KanoPlatformIds.cs" />
-    <Compile Include="PlatformDetection\KanoPlatformDetector.cs" />
+    <Compile Include="KanoPlatforms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\IResourcesHelper.cs" />
-    <Compile Include="Resources\ResourcesHelper.cs" />
-    <Compile Include="SystemNotifications\ToastHelper.cs" />
-    <Compile Include="Display\IWindowManager.cs" />
-    <Compile Include="Display\WindowManager.cs" />
-    <Compile Include="Wrappers\IKConnectionProfile.cs" />
-    <Compile Include="Wrappers\IKEasClientDeviceInformation.cs" />
-    <Compile Include="Wrappers\IKNetworkInformation.cs" />
-    <Compile Include="Wrappers\KConnectionProfile.cs" />
-    <Compile Include="Wrappers\KEasClientDeviceInformation.cs" />
-    <Compile Include="Wrappers\KNetworkInformation.cs" />
-    <EmbeddedResource Include="Properties\KpcUwpCore.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.11</Version>
+      <Version>6.2.10</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="AppUpdate\MandatoryUpdate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Network\OfflinePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <PRIResource Include="Assets\Strings\en-US\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\KpcUwpCoreContracts\KpcUwpCoreContracts.csproj">
-      <Project>{7884cc20-26bc-4dd1-8d11-2d9c2d10719f}</Project>
-      <Name>KpcUwpCoreContracts</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PRIResource Include="Assets\Strings\ja-JP\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <XliffResource Include="MultilingualResources\KpcUwpCore.ja-JP.xlf" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.PriResources.targets')" />
-  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets')" Label="MultilingualAppToolkit">
-    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
-  </Target>
-  <PropertyGroup>
-    <PostBuildEvent>set NugetDir=Package
-
-echo Ensuring NuGet package directory
-cd $(ProjectDir)$(OutDir) &amp;&amp; ^
-if not exist %25NugetDir%25 mkdir %25NugetDir%25 &amp;&amp; ^
-cd $(ProjectDir)
-if errorlevel 1 exit 1
-
-echo Building NuGet package
-nuget pack $(ProjectDir)$(ProjectName).nuspec -OutputDirectory $(ProjectDir)$(OutDir)%25NugetDir%25\ -NonInteractive -Verbosity detailed -Properties Binaries=$(ProjectDir)$(OutDir);Configuration=$(Configuration)
-if errorlevel 1 exit 1
-
-echo Verifying NuGet Package
-echo DISABLED: nuget verify -All $(ProjectDir)$(OutDir)%25NugetDir%25\*.nupkg
-</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

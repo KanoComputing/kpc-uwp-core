@@ -6,7 +6,7 @@
  */
 
 
-using KanoComputing.KpcUwpCore.PlatformDetection;
+using KanoComputing.KpcUwpCore.Contracts;
 using KanoComputing.KpcUwpCore.PlatformDetection.Internal;
 using System.Collections.Generic;
 using System.Linq;

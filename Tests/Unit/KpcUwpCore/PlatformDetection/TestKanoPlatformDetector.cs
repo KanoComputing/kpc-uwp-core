@@ -6,6 +6,7 @@
  */
 
 
+using KanoComputing.KpcUwpCore.Contracts;
 using KanoComputing.KpcUwpCore.PlatformDetection;
 using KanoComputing.KpcUwpCore.PlatformDetection.Internal;
 using KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.PlatformDetection;
