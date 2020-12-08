@@ -6,6 +6,7 @@
  */
 
 
+using KanoComputing.KpcUwpCore.Contracts;
 using System.Collections.Generic;
 
 

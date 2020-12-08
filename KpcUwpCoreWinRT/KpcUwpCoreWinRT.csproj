@@ -121,6 +121,8 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="PlatformDetection\IKanoPlatformDetector.cs" />
+    <Compile Include="PlatformDetection\KanoPlatformDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,11 +131,16 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KpcUwpCoreContracts\KpcUwpCoreContracts.csproj">
+      <Project>{7884cc20-26bc-4dd1-8d11-2d9c2d10719f}</Project>
+      <Name>KpcUwpCoreContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KpcUwpCore\KpcUwpCore.csproj">
       <Project>{51d7caf5-b40b-4d63-85bb-2a3a18eeda42}</Project>
       <Name>KpcUwpCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

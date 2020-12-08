@@ -6,7 +6,7 @@
  */
 
 
-namespace KanoComputing.KpcUwpCore.PlatformDetection {
+namespace KanoComputing.KpcUwpCore.Contracts {
 
     public enum KanoDevice {
         Unknown = 0,

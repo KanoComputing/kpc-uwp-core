@@ -6,6 +6,9 @@
  */
 
 
+using KanoComputing.KpcUwpCore.Contracts;
+
+
 namespace KanoComputing.KpcUwpCore.PlatformDetection {
 
     public interface IKanoPlatformDetector {
