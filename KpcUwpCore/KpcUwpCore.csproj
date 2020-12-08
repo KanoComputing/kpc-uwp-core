@@ -131,7 +131,7 @@
     <Compile Include="AppUpdate\MandatoryUpdate.xaml.cs">
       <DependentUpon>MandatoryUpdate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Assets\ResourceMapIds.cs" />
+    <Compile Include="Assets\Internal\ResourceMapIds.cs" />
     <Compile Include="Network\INetworkStatus.cs" />
     <Compile Include="Network\NetworkStatus.cs" />
     <Compile Include="Network\OfflinePage.xaml.cs">

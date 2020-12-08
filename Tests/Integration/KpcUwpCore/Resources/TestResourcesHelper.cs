@@ -7,7 +7,7 @@
 
 
 using Castle.Core.Internal;
-using KanoComputing.KpcUwpCore.Assets;
+using KanoComputing.KpcUwpCore.Assets.Internal;
 using KanoComputing.KpcUwpCore.Resources;
 using KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Resources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

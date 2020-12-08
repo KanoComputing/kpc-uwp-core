@@ -6,7 +6,7 @@
  */
 
 
-using KanoComputing.KpcUwpCore.Assets;
+using KanoComputing.KpcUwpCore.Assets.Internal;
 using KanoComputing.KpcUwpCore.Network;
 using KanoComputing.KpcUwpCore.Resources;
 using System;
