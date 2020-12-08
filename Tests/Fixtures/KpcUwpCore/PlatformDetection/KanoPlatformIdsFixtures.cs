@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace KanoComputing.KpcUwpCore.Tests.Fixtures.PlatformDetection {
+namespace KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.PlatformDetection {
 
     public class KanoPlatformIdsFixtures {
 

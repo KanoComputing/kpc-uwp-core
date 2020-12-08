@@ -8,13 +8,13 @@
 
 using KanoComputing.KpcUwpCore.PlatformDetection;
 using KanoComputing.KpcUwpCore.PlatformDetection.Internal;
-using KanoComputing.KpcUwpCore.Tests.Fixtures.PlatformDetection;
+using KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.PlatformDetection;
 using KanoComputing.KpcUwpCore.Wrappers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 
-namespace KanoComputing.KpcUwpCore.Tests.Unit.PlatformDetection {
+namespace KanoComputing.KpcUwpCore.Tests.Unit.KpcUwpCore.PlatformDetection {
 
     [TestClass]
     public class TestKanoPlatformDetector {

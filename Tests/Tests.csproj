@@ -119,19 +119,19 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fixtures\Network\NetworkStatusFixtures.cs" />
-    <Compile Include="Fixtures\PlatformDetection\KanoPlatformIdsFixtures.cs" />
-    <Compile Include="Fixtures\Resources\ResourcesFixtures.cs" />
-    <Compile Include="Integration\Resources\TestResourcesHelper.cs" />
-    <Compile Include="Integration\Resources\TestStringsLocalisation.cs" />
+    <Compile Include="Fixtures\KpcUwpCore\Network\NetworkStatusFixtures.cs" />
+    <Compile Include="Fixtures\KpcUwpCore\PlatformDetection\KanoPlatformIdsFixtures.cs" />
+    <Compile Include="Fixtures\KpcUwpCore\Resources\ResourcesFixtures.cs" />
+    <Compile Include="Integration\KpcUwpCore\Resources\TestResourcesHelper.cs" />
+    <Compile Include="Integration\KpcUwpCore\Resources\TestStringsLocalisation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestApp.xaml.cs">
       <DependentUpon>UnitTestApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Unit\Display\TestWindowManager.cs" />
-    <Compile Include="Unit\Network\TestNetworkStatus.cs" />
-    <Compile Include="Unit\PlatformDetection\TestKanoPlatformDetector.cs" />
-    <Compile Include="Unit\Wrappers\TestKEasClientDeviceInformation.cs" />
+    <Compile Include="Unit\KpcUwpCore\Display\TestWindowManager.cs" />
+    <Compile Include="Unit\KpcUwpCore\Network\TestNetworkStatus.cs" />
+    <Compile Include="Unit\KpcUwpCore\PlatformDetection\TestKanoPlatformDetector.cs" />
+    <Compile Include="Unit\KpcUwpCore\Wrappers\TestKEasClientDeviceInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="UnitTestApp.xaml">
@@ -174,6 +174,7 @@
       <Name>KpcUwpCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

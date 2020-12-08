@@ -7,14 +7,14 @@
 
 
 using KanoComputing.KpcUwpCore.Network;
-using KanoComputing.KpcUwpCore.Tests.Fixtures.Network;
+using KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Network;
 using KanoComputing.KpcUwpCore.Wrappers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Windows.Networking.Connectivity;
 
 
-namespace KanoComputing.KpcUwpCore.Tests.Unit.Network {
+namespace KanoComputing.KpcUwpCore.Tests.Unit.KpcUwpCore.Network {
 
     [TestClass]
     public class TestNetworkStatus {
