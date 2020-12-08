@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace KanoComputing.KpcUwpCore.PlatformDetection.Internal {
 
-    public static class KanoPlatformIds {
+    internal static class KanoPlatformIds {
 
         public static readonly Dictionary<string, KanoDevice> KanoDeviceIds =
             new Dictionary<string, KanoDevice> {

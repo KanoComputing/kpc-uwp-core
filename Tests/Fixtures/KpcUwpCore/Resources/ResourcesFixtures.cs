@@ -6,7 +6,7 @@
  */
 
 
-using KanoComputing.KpcUwpCore.Assets;
+using KanoComputing.KpcUwpCore.Assets.Internal;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Windows.ApplicationModel.Resources.Core;
