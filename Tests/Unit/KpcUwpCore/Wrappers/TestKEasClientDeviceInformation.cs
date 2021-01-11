@@ -17,6 +17,22 @@ namespace KanoComputing.KpcUwpCore.Tests.Unit.KpcUwpCore.Wrappers {
     public class TestKEasClientDeviceInformation {
 
         [TestMethod]
+        public void TestDefaultConstructor() {
+            IKEasClientDeviceInformation wrapper = new KEasClientDeviceInformation();
+
+            // Imperfect sanity check that the wrapped object is actually called.
+            Assert.IsNotNull(
+                wrapper.SystemManufacturer,
+                "Property was not initialised correctly");
+            Assert.IsNotNull(
+                wrapper.SystemProductName,
+                "Property was not initialised correctly");
+            Assert.IsNotNull(
+                wrapper.SystemSku,
+                "Property was not initialised correctly");
+        }
+
+        [TestMethod]
         public void TestSystemManufacturer() {
             string expected = "PearShapedInc";
 

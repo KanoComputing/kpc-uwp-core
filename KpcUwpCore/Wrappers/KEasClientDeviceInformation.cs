@@ -20,9 +20,9 @@ namespace KanoComputing.KpcUwpCore.Wrappers {
             new EasClientDeviceInformation();
 
         public KEasClientDeviceInformation(
-                string systemManufacturer = "",
-                string systemProductName = "",
-                string systemSku = "") {
+                string systemManufacturer = null,
+                string systemProductName = null,
+                string systemSku = null) {
 
             this.SystemManufacturer = systemManufacturer ?? this.easClientDeviceInformation.SystemManufacturer;
             this.SystemProductName = systemProductName ?? this.easClientDeviceInformation.SystemProductName;
