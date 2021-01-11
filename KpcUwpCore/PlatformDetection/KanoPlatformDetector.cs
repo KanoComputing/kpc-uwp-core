@@ -9,6 +9,7 @@
 using KanoComputing.KpcUwpCore.Contracts;
 using KanoComputing.KpcUwpCore.PlatformDetection.Internal;
 using KanoComputing.KpcUwpCore.Wrappers;
+using System.Diagnostics;
 
 
 namespace KanoComputing.KpcUwpCore.PlatformDetection {
@@ -43,11 +44,13 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
 
         public KanoDevice GetKanoDevice() {
             string model = this.deviceInfo.SystemProductName;
+            Debug.WriteLine($"{this.GetType()}: GetKanoDevice: SystemProductName is '{model}'");
             return KanoPlatformIds.GetDeviceById(model);
         }
 
         public KanoPcSku GetKanoPcSku() {
             string sku = this.deviceInfo.SystemSku;
+            Debug.WriteLine($"{this.GetType()}: GetKanoPcSku: SystemSku is '{sku}'");
             return KanoPlatformIds.GetKanoPcSkuById(sku);
         }
     }
