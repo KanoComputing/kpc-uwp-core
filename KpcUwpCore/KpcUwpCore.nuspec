@@ -27,7 +27,11 @@
     <file
       src="$binaries$*.xr.xml"
       target="lib\uap10.0.17763\KpcUwpCore\"/>
-    <file src="Assets\Images\icon.png" target="images\"/>
-    <file src="..\LICENS*" target="licenses\"/>
+    <file
+      src="Assets\Images\icon.png"
+      target="images\"/>
+    <file
+      src="..\LICENS*"
+      target="licenses\"/>
   </files>
 </package>
