@@ -121,6 +121,8 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="PackageManagement\IPackageScanner.cs" />
+    <Compile Include="PackageManagement\PackageScanner.cs" />
     <Compile Include="PlatformDetection\IKanoPlatformDetector.cs" />
     <Compile Include="PlatformDetection\KanoPlatformDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

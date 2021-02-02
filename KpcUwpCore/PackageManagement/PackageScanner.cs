@@ -1,7 +1,7 @@
 ﻿/**
  * PackageScanner.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  */
 
@@ -18,20 +18,26 @@ namespace KanoComputing.KpcUwpCore.PackageManagement {
 
         public async Task<bool> IsAppInstalledAsync(Uri protocolName, string packageFamilyName) {
             try {
-                LaunchQuerySupportStatus status =
+                LaunchQuerySupportStatus statusUri =
                     await Launcher.QueryUriSupportAsync(
                         protocolName, LaunchQuerySupportType.Uri, packageFamilyName);
 
-                bool appInstalled = status == LaunchQuerySupportStatus.Available;
+                LaunchQuerySupportStatus statusResults =
+                    await Launcher.QueryUriSupportAsync(
+                        protocolName, LaunchQuerySupportType.UriForResults, packageFamilyName);
 
-                Debug.WriteLine(
-                    "PackageScanner: IsAppInstalledAsync: " +
-                    protocolName + " " + packageFamilyName + " " + appInstalled);
+                bool appInstalled =
+                    statusUri == LaunchQuerySupportStatus.Available
+                    || statusResults == LaunchQuerySupportStatus.Available;
 
+                Debug.WriteLine("PackageScanner: IsAppInstalledAsync: " +
+                    $"Protocol: {protocolName}, PackageFamilyName: {packageFamilyName}, " +
+                    $"SupportsUri: {statusUri}, SupportsResults: {statusResults}, " +
+                    $"Installed: {appInstalled}");
                 return appInstalled;
 
             } catch (Exception e) {
-                Debug.WriteLine("PackageScanner: IsAppInstalledAsync: Error: " + e);
+                Debug.WriteLine($"PackageScanner: IsAppInstalledAsync: Caught: {e}");
                 return false;
             }
         }
