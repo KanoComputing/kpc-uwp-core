@@ -1,7 +1,7 @@
 ﻿/**
  * ResourceMapIds.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  */
 
@@ -14,6 +14,6 @@ namespace KanoComputing.KpcUwpCore.Assets.Internal {
     /// </summary>
     internal class ResourceMapIds {
 
-        internal const string Strings = "KpcUwpCore/Resources";
+        internal const string Strings = "KanoComputing.KpcUwpCore/Resources";
     }
 }
