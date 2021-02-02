@@ -1,7 +1,7 @@
 ﻿/**
- * IKanoPlatformDetector.cs
+ * IPackageScanner.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  *
  * Windows Runtime Component wrapper.
@@ -14,15 +14,13 @@
  */
 
 
-using KanoComputing.KpcUwpCore.Contracts;
+using Windows.Foundation;
 
 
-namespace KanoComputing.KpcUwpCore.WinRT.PlatformDetection {
+namespace KanoComputing.KpcUwpCore.WinRT.PackageManagement {
 
-    public interface IKanoPlatformDetector {
+    public interface IPackageScanner {
 
-        bool isKanoPc();
-
-        KanoPcSku getKanoPcSku();
+        IAsyncOperation<bool> isAppInstalledAsync(string protocolName, string packageFamilyName);
     }
 }

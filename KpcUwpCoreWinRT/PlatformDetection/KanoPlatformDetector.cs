@@ -9,7 +9,8 @@
  * NOTE:
  *     Method signatures have been renamed to use camel case due to the fact
  *     that they get implicitly renamed without warning when objects are
- *     exposed and used on the web.
+ *     exposed to and used from JavaScript. See:
+ *     https://docs.microsoft.com/en-us/windows/uwp/winrt-components/walkthrough-creating-a-simple-windows-runtime-component-and-calling-it-from-javascript#call-the-component-from-javascript
  */
 
 
