@@ -29,4 +29,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Other configuration.
-[assembly: InternalsVisibleTo("Tests")]
+[assembly: InternalsVisibleTo("KanoComputing.KpcUwpCore.Tests")]
