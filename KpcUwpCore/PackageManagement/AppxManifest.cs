@@ -27,7 +27,7 @@ namespace KanoComputing.KpcUwpCore.PackageManagement {
         /// </summary>
         /// <param name="path">The application URI path to the Package.appxmanifest file.
         /// For example, 'ms-appx:///Fixtures/MyApp/Package.appxmanifest'.</param>
-        /// <param name="defaultXmlns">The prefix for a default (unprefixed) XML namespace.</param
+        /// <param name="defaultXmlns">The prefix for a default (unprefixed) XML namespace.</param>
         public async Task LoadAsync(Uri path, string defaultXmlns = "appx") {
             StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(path);
             string data = await FileIO.ReadTextAsync(file);
