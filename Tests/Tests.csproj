@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fixtures\KpcUwpCore\Network\NetworkStatusFixtures.cs" />
+    <Compile Include="Fixtures\KpcUwpCore\PackageManagement\AppxManifestFixture.cs" />
     <Compile Include="Fixtures\KpcUwpCore\PlatformDetection\KanoPlatformIdsFixtures.cs" />
     <Compile Include="Fixtures\KpcUwpCore\Resources\ResourcesFixtures.cs" />
     <Compile Include="Integration\KpcUwpCore\Resources\TestResourcesHelper.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Unit\KpcUwpCoreWinRT\PlatformDetection\TestKanoPlatformDetector.cs" />
     <Compile Include="Unit\KpcUwpCore\Display\TestWindowManager.cs" />
     <Compile Include="Unit\KpcUwpCore\Network\TestNetworkStatus.cs" />
+    <Compile Include="Unit\KpcUwpCore\PackageManagement\TestAppxManifest.cs" />
     <Compile Include="Unit\KpcUwpCore\PlatformDetection\TestKanoPlatformDetector.cs" />
     <Compile Include="Unit\KpcUwpCore\Wrappers\TestKEasClientDeviceInformation.cs" />
   </ItemGroup>
@@ -184,7 +186,11 @@
       <Name>KpcUwpCore</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Fixtures\KpcUwpCore\PackageManagement\Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

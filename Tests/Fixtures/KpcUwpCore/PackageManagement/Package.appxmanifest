@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:uap4="http://schemas.microsoft.com/appx/manifest/uap/windows10/4"
+  xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+  xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap mp desktop4 iot2 rescap">
+
+  <Identity Name="SampleApp"
+            Publisher="CN=Sample"
+            Version="0.0.1.0" />
+
+  <mp:PhoneIdentity PhoneProductId="xxxxxxxx-89f2-4e59-a14f-eaf65da22d8a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+
+  <Properties>
+    <DisplayName>Sample App</DisplayName>
+    <PublisherDisplayName>Sample</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="EN-US" />
+    <Resource Language="JA-JP" />
+  </Resources>
+
+  <Applications>
+    <Application
+      Id="App"
+      Executable="$targetnametoken$.exe"
+      desktop4:SupportsMultipleInstances="true"
+      iot2:SupportsMultipleInstances="true"
+      EntryPoint="SampleApp.App">
+
+      <uap:VisualElements DisplayName="Sample App" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Sample App" BackgroundColor="#fe6a00">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png">
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#fe6a00"/>
+        <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png" Notification="badgeAndTileText"/>
+      </uap:VisualElements>
+
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="sample-app">
+            <uap:Logo>Assets\shares\share-1.png</uap:Logo>
+            <uap:DisplayName>Sample App Scheme</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+
+        <uap:Extension Category="windows.appService" EntryPoint="SampleApp.AppService.ServiceHandler">
+          <uap3:AppService Name="com.app.sample" uap4:SupportsMultipleInstances="true" SupportsRemoteSystems="true" />
+        </uap:Extension>
+
+        <Extension Category="windows.preInstalledConfigTask" EntryPoint="SampleApp.BackgroundTasks.PreinstallTask"/>
+        <Extension Category="windows.updateTask" EntryPoint="SampleApp.BackgroundTasks.UpdateTask"/>
+
+        <Extension Category="windows.backgroundTasks" EntryPoint="SampleApp.BackgroundTasks.CheckStoreUpdatesTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="SampleApp.BackgroundTasks.UpdateLiveTilesTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent" />
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Type="include" Match="ms-appx-web://" WindowsRuntimeAccess="all"/>
+      </uap:ApplicationContentUriRules>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="smbios" />
+  </Capabilities>
+</Package>
