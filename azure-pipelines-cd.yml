@@ -12,11 +12,11 @@ resources:
   pipelines:
   - pipeline: ci
     source: 'KpcUwpCore CI'
-    branch: master
+    branch: main
     trigger:
       branches:
         include:
-        - master
+        - main
   repositories:
   - repository: templates
     type: github
