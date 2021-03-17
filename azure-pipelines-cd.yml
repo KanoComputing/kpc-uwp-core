@@ -1,6 +1,6 @@
 # azure-pipelines-cd.yml
 #
-# Copyright (c) 2020 Kano Computing Ltd.
+# Copyright (c) 2021 Kano Computing Ltd.
 #
 # Continuous deployment pipeline for the project.
 
@@ -22,7 +22,7 @@ resources:
     type: github
     name: KanoComputing/azure-pipeline-templates
     endpoint: KanoComputing
-    ref: refs/tags/4.0.0
+    ref: refs/tags/4.1.3
 
 
 stages:
@@ -43,5 +43,27 @@ stages:
   - template: jobs/release-to-nuget.yml@templates
     parameters:
       environment: 'Production'
+
+  - deployment: UploadLibs
+    displayName: 'Upload libraries to Kano PC bucket'
+    environment: 'Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - template: steps/kano-pc-bucket-upload.yml@templates
+            parameters:
+              globExpressions: |
+                **/*.nupkg
+                !**/*WinRT*
+                !**/*.symbols.nupkg
+              targetFolder: 'libs/prod/kpc-uwp-core'
+
+          - template: steps/kano-pc-bucket-upload.yml@templates
+            parameters:
+              globExpressions: |
+                **/*WinRT*.nupkg
+                !**/*.symbols.nupkg
+              targetFolder: 'libs/prod/kpc-uwp-core-winrt'
 
 - template: stages/release-documentation.yml@templates

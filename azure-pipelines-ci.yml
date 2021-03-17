@@ -1,6 +1,6 @@
 # azure-pipelines-ci.yml
 #
-# Copyright (c) 2020 Kano Computing Ltd.
+# Copyright (c) 2021 Kano Computing Ltd.
 #
 # Continuous integration pipeline for the project.
 
@@ -29,7 +29,7 @@ resources:
     type: github
     name: KanoComputing/azure-pipeline-templates
     endpoint: KanoComputing
-    ref: refs/tags/4.0.0
+    ref: refs/tags/4.1.3
 
 pool:
   vmImage: 'windows-latest'
