@@ -1,6 +1,6 @@
 # dependabot.yml
 #
-# Copyright (c) 2020 Kano Computing Ltd.
+# Copyright (c) 2021 Kano Computing Ltd.
 #
 # Automatated dependency upgrades for the project.
 
@@ -11,3 +11,5 @@ updates:
   directory: "/"
   schedule:
     interval: "daily"
+    time: "01:00"
+    timezone: "Europe/London"
