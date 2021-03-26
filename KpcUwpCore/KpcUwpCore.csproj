@@ -142,7 +142,9 @@
     <Compile Include="PackageManagement\PackageScanner.cs" />
     <Compile Include="PlatformDetection\IKanoPlatformDetector.cs" />
     <Compile Include="PlatformDetection\Internal\KanoPlatformIds.cs" />
+    <Compile Include="PlatformDetection\IPlatformIdentifiers.cs" />
     <Compile Include="PlatformDetection\KanoPlatformDetector.cs" />
+    <Compile Include="PlatformDetection\PlatformIdentifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\IResourcesHelper.cs" />
     <Compile Include="Resources\ResourcesHelper.cs" />

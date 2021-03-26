@@ -124,7 +124,9 @@
     <Compile Include="PackageManagement\IPackageScanner.cs" />
     <Compile Include="PackageManagement\PackageScanner.cs" />
     <Compile Include="PlatformDetection\IKanoPlatformDetector.cs" />
+    <Compile Include="PlatformDetection\IPlatformIdentifiers.cs" />
     <Compile Include="PlatformDetection\KanoPlatformDetector.cs" />
+    <Compile Include="PlatformDetection\PlatformIdentifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
