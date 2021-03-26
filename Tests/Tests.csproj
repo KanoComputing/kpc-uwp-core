@@ -131,10 +131,12 @@
     </Compile>
     <Compile Include="Unit\KpcUwpCoreWinRT\PackageManagement\TestPackageScanner.cs" />
     <Compile Include="Unit\KpcUwpCoreWinRT\PlatformDetection\TestKanoPlatformDetector.cs" />
+    <Compile Include="Unit\KpcUwpCoreWinRT\PlatformDetection\TestPlatformIdentifiers.cs" />
     <Compile Include="Unit\KpcUwpCore\Display\TestWindowManager.cs" />
     <Compile Include="Unit\KpcUwpCore\Network\TestNetworkStatus.cs" />
     <Compile Include="Unit\KpcUwpCore\PackageManagement\TestAppxManifest.cs" />
     <Compile Include="Unit\KpcUwpCore\PlatformDetection\TestKanoPlatformDetector.cs" />
+    <Compile Include="Unit\KpcUwpCore\PlatformDetection\TestPlatformIdentifiers.cs" />
     <Compile Include="Unit\KpcUwpCore\Wrappers\TestKEasClientDeviceInformation.cs" />
   </ItemGroup>
   <ItemGroup>
