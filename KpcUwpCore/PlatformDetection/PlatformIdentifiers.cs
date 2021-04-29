@@ -24,7 +24,7 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
         /// The string value is hashed before returning.
         /// </summary>
         public string GetDeviceId() {
-            return this.Hash(
+            return Hash(
                 CryptographicBuffer.EncodeToBase64String(
                     SystemIdentification.GetSystemIdForPublisher().Id));
         }
@@ -34,7 +34,7 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
         /// The string value is hashed before returning.
         /// </summary>
         public string GetUserId() {
-            return this.Hash(
+            return Hash(
                 WindowsIdentity.GetCurrent().User.ToString());
         }
 
@@ -43,11 +43,11 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
         /// The string value is hashed before returning.
         /// </summary>
         public string GetSessionId() {
-            return this.Hash(
+            return Hash(
                 WindowsLogonSession.GetSid());
         }
 
-        private string Hash(string data) {
+        private static string Hash(string data) {
             using (HashAlgorithm algorithm = SHA256.Create()) {
                 StringBuilder stringBuilder = new StringBuilder();
                 foreach (byte currentByte in algorithm.ComputeHash(Encoding.UTF8.GetBytes(data))) {
@@ -60,57 +60,98 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
 
         private class WindowsLogonSession {
 
-            // The SID structure that identifies the user that is currently associated
-            // with the specified object. If no user is associated with the object,
-            // the value returned in the buffer pointed to by lpnLengthNeeded is zero.
-            // Note that SID is a variable length structure. You will usually make a
-            // call to GetUserObjectInformation to determine the length of the SID
-            // before retrieving its value.
-            private const int UOI_USER_SID = 4;
+            public const uint SE_GROUP_LOGON_ID = 0xC0000000;  // from winnt.h
+            public const int TokenGroups = 2;  // from TOKEN_INFORMATION_CLASS
 
-            // Retrieves the thread identifier of the calling thread.
-            [DllImport("kernel32.dll")]
-            private static extern int GetCurrentThreadId();
+            private enum TOKEN_INFORMATION_CLASS {
+                TokenUser = 1,
+                TokenGroups,
+                TokenPrivileges,
+                TokenOwner,
+                TokenPrimaryGroup,
+                TokenDefaultDacl,
+                TokenSource,
+                TokenType,
+                TokenImpersonationLevel,
+                TokenStatistics,
+                TokenRestrictedSids,
+                TokenSessionId,
+                TokenGroupsAndPrivileges,
+                TokenSessionReference,
+                TokenSandBoxInert,
+                TokenAuditPolicy,
+                TokenOrigin
+            }
 
-            // Retrieves a handle to the desktop assigned to the specified thread.
-            [DllImport("user32.dll")]
-            private static extern IntPtr GetThreadDesktop(int dwThreadId);
+            [StructLayout(LayoutKind.Sequential)]
+            private struct SID_AND_ATTRIBUTES {
+                public IntPtr Sid;
+                public uint Attributes;
+            }
 
-            // Retrieves information about the specified window station or desktop object.
-            [DllImport("user32.dll")]
-            private static extern bool GetUserObjectInformation(
-                IntPtr hObj,
-                int nIndex,
-                [MarshalAs(UnmanagedType.LPArray)] byte[] pvInfo,
-                int nLength,
-                out uint lpnLengthNeeded);
+            [StructLayout(LayoutKind.Sequential)]
+            private struct TOKEN_GROUPS {
+                public int GroupCount;
+                [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+                public SID_AND_ATTRIBUTES[] Groups;
+            };
 
-            // Converts a security identifier (SID) to a string format suitable for
-            // display, storage, or transmission.
+            [DllImport("advapi32.dll", SetLastError = true)]
+            private static extern bool GetTokenInformation(
+                IntPtr TokenHandle,
+                TOKEN_INFORMATION_CLASS TokenInformationClass,
+                IntPtr TokenInformation,
+                int TokenInformationLength,
+                out int ReturnLength);
+
+            // Using IntPtr for pSID instead of Byte[].
             [DllImport("advapi32", CharSet = CharSet.Auto, SetLastError = true)]
-            private static extern bool ConvertSidToStringSid(
-                [MarshalAs(UnmanagedType.LPArray)] byte[] pSID,
-                out IntPtr ptrSid);
+            private static extern bool ConvertSidToStringSid(IntPtr pSID, out IntPtr ptrSid);
 
-            /// <summary>
-            /// Returns the Logon Session SID string.
-            /// </summary>
+            [DllImport("kernel32.dll")]
+            private static extern IntPtr LocalFree(IntPtr hMem);
+
             public static string GetSid() {
-                byte[] buffer = new byte[100];
-                IntPtr ptrSid;
-                string sidString = "";
-                uint lengthNeeded;
+                int TokenInfLength = 0;
+                // First call gets lenght of TokenInformation.
+                bool Result = GetTokenInformation(
+                    WindowsIdentity.GetCurrent().Token,
+                    TOKEN_INFORMATION_CLASS.TokenGroups,
+                    IntPtr.Zero,
+                    TokenInfLength,
+                    out TokenInfLength);
+                IntPtr TokenInformation = Marshal.AllocHGlobal(TokenInfLength);
+                Result = GetTokenInformation(
+                    WindowsIdentity.GetCurrent().Token,
+                    TOKEN_INFORMATION_CLASS.TokenGroups,
+                    TokenInformation,
+                    TokenInfLength,
+                    out TokenInfLength);
 
-                IntPtr hdesk = GetThreadDesktop(GetCurrentThreadId());
-                GetUserObjectInformation(hdesk, UOI_USER_SID, buffer, 100, out lengthNeeded);
-                if (!ConvertSidToStringSid(buffer, out ptrSid))
-                    throw new System.ComponentModel.Win32Exception();
-
-                try {
-                    sidString = Marshal.PtrToStringAuto(ptrSid);
-                } catch {
+                if (!Result) {
+                    Marshal.FreeHGlobal(TokenInformation);
+                    return string.Empty;
                 }
-                return sidString;
+
+                string retVal = string.Empty;
+                TOKEN_GROUPS groups = (TOKEN_GROUPS)Marshal.PtrToStructure(TokenInformation, typeof(TOKEN_GROUPS));
+                int sidAndAttrSize = Marshal.SizeOf(new SID_AND_ATTRIBUTES());
+
+                for (int i = 0; i < groups.GroupCount; i++) {
+                    SID_AND_ATTRIBUTES sidAndAttributes = (SID_AND_ATTRIBUTES)Marshal.PtrToStructure(
+                        new IntPtr(TokenInformation.ToInt64() + i * sidAndAttrSize + IntPtr.Size),
+                        typeof(SID_AND_ATTRIBUTES));
+
+                    if ((sidAndAttributes.Attributes & SE_GROUP_LOGON_ID) == SE_GROUP_LOGON_ID) {
+                        IntPtr pstr = IntPtr.Zero;
+                        ConvertSidToStringSid(sidAndAttributes.Sid, out pstr);
+                        retVal = Marshal.PtrToStringAuto(pstr);
+                        LocalFree(pstr);
+                        break;
+                    }
+                }
+                Marshal.FreeHGlobal(TokenInformation);
+                return retVal;
             }
         }
     }
