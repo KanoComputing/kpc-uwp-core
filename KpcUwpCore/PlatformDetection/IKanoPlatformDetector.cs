@@ -16,8 +16,6 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
         bool IsKanoDevice();
 
         bool IsKanoPc();
-        bool IsKanoPcRetail();
-        bool IsKanoPcEducation();
 
         KanoDevice GetKanoDevice();
         KanoPcSku GetKanoPcSku();
