@@ -22,6 +22,14 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
             this.deviceInfo = deviceInfo ?? new KEasClientDeviceInformation();
         }
 
+        public string GetDeviceSku() {
+            if (this.IsKanoPc()) {
+                return this.GetKanoPcSku().ToString();
+            }
+            // This is the only generic device at the moment that we expect.
+            return GenericDevice.Windows.ToString();
+        }
+
         public bool IsKanoDevice() {
             return this.GetKanoDevice() != KanoDevice.Unknown;
         }

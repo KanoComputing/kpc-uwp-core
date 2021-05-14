@@ -1,7 +1,7 @@
 ﻿/**
  * IKanoPlatformDetector.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2020-2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  */
 
@@ -13,8 +13,9 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
 
     public interface IKanoPlatformDetector {
 
-        bool IsKanoDevice();
+        string GetDeviceSku();
 
+        bool IsKanoDevice();
         bool IsKanoPc();
 
         KanoDevice GetKanoDevice();
