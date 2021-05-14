@@ -1,7 +1,7 @@
 ﻿/**
  * KanoPlatformDetector.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2020-2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  *
  * Windows Runtime Component wrapper.
@@ -27,6 +27,10 @@ namespace KanoComputing.KpcUwpCore.WinRT.PlatformDetection {
 
         public KanoPlatformDetector() {
             this.kanoPlatformDetector = new KanoComputing.KpcUwpCore.PlatformDetection.KanoPlatformDetector();
+        }
+
+        public string getDeviceSku() {
+            return this.kanoPlatformDetector.GetDeviceSku();
         }
 
         public bool isKanoPc() {

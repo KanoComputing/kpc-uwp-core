@@ -1,7 +1,7 @@
 ﻿/**
  * TestKanoPlatformDetector.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2020-2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  */
 
@@ -14,6 +14,21 @@ namespace KanoComputing.KpcUwpCore.Tests.Unit.KpcUwpCoreWinRT.PlatformDetection 
 
     [TestClass]
     public class TestKanoPlatformDetector {
+
+        [TestMethod]
+        public void TestGetDeviceSku() {
+            KanoComputing.KpcUwpCore.PlatformDetection.IKanoPlatformDetector detector =
+                new KanoComputing.KpcUwpCore.PlatformDetection.KanoPlatformDetector();
+            KanoComputing.KpcUwpCore.WinRT.PlatformDetection.IKanoPlatformDetector detectorWinRT =
+                new KanoComputing.KpcUwpCore.WinRT.PlatformDetection.KanoPlatformDetector();
+
+            string expectedResult = detector.GetDeviceSku();
+            string resultWinRT = detectorWinRT.getDeviceSku();
+
+            Assert.AreEqual(
+                expectedResult, resultWinRT,
+                "WinRT function not wrapping main one correctly");
+        }
 
         [TestMethod]
         public void TestIsKanoPc() {

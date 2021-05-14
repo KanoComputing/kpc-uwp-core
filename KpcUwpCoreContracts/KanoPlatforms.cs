@@ -1,12 +1,17 @@
 ﻿/**
  * KanoPlatforms.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2020-2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  */
 
 
 namespace KanoComputing.KpcUwpCore.Contracts {
+
+    public enum GenericDevice {
+        Unknown = 0,
+        Windows = 1
+    }
 
     public enum KanoDevice {
         Unknown = 0,

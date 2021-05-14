@@ -1,7 +1,7 @@
 ﻿/**
  * TestKanoPlatformDetector.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2020-2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  */
 
@@ -19,6 +19,23 @@ namespace KanoComputing.KpcUwpCore.Tests.Unit.KpcUwpCore.PlatformDetection {
 
     [TestClass]
     public class TestKanoPlatformDetector {
+
+        [DataTestMethod]
+        [DynamicData(nameof(KanoPlatformIdsFixtures.DeviceSkuIdsWithUnkown),
+                     typeof(KanoPlatformIdsFixtures), DynamicDataSourceType.Method)]
+        public void TestGetDeviceSku(string productName, string sku, string deviceSku) {
+            // Setup any objects and mocks.
+            IKEasClientDeviceInformation deviceInfo = new KEasClientDeviceInformation(systemProductName: productName, systemSku: sku);
+            IKanoPlatformDetector detector = new KanoPlatformDetector(deviceInfo);
+
+            // Call the method under test.
+            string actualSku = detector.GetDeviceSku();
+
+            // Verify the results produced.
+            Assert.AreEqual(
+                deviceSku, actualSku,
+                "Detection function is not returning the expected device SKU");
+        }
 
         [DataTestMethod]
         [DynamicData(nameof(KanoPlatformIdsFixtures.KanoDeviceIdsWithUnkown),
