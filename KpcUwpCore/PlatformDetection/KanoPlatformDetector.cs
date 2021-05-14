@@ -1,7 +1,7 @@
 ﻿/**
  * KanoPlatformDetector.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2020-2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  */
 
@@ -19,7 +19,6 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
         private readonly IKEasClientDeviceInformation deviceInfo = null;
 
         public KanoPlatformDetector(IKEasClientDeviceInformation deviceInfo = null) {
-            // TODO: Inject this dependency.
             this.deviceInfo = deviceInfo ?? new KEasClientDeviceInformation();
         }
 
@@ -29,17 +28,6 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
 
         public bool IsKanoPc() {
             return this.GetKanoDevice() == KanoDevice.KanoPc;
-        }
-
-        public bool IsKanoPcRetail() {
-            return
-                this.IsKanoPc() &&
-                this.GetKanoPcSku() == KanoPcSku.Retail;
-        }
-        public bool IsKanoPcEducation() {
-            return
-                this.IsKanoPc() &&
-                this.GetKanoPcSku() == KanoPcSku.Education;
         }
 
         public KanoDevice GetKanoDevice() {
