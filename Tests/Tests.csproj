@@ -123,6 +123,8 @@
     <Compile Include="Fixtures\KpcUwpCore\PackageManagement\AppxManifestFixture.cs" />
     <Compile Include="Fixtures\KpcUwpCore\PlatformDetection\KanoPlatformIdsFixtures.cs" />
     <Compile Include="Fixtures\KpcUwpCore\Resources\ResourcesFixtures.cs" />
+    <Compile Include="Fixtures\KpcUwpCore\Serialisation\UserContracts.cs" />
+    <Compile Include="Fixtures\KpcUwpCore\Serialisation\SerialiserFixtures.cs" />
     <Compile Include="Integration\KpcUwpCore\Resources\TestResourcesHelper.cs" />
     <Compile Include="Integration\KpcUwpCore\Resources\TestStringsLocalisation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +139,7 @@
     <Compile Include="Unit\KpcUwpCore\PackageManagement\TestAppxManifest.cs" />
     <Compile Include="Unit\KpcUwpCore\PlatformDetection\TestKanoPlatformDetector.cs" />
     <Compile Include="Unit\KpcUwpCore\PlatformDetection\TestPlatformIdentifiers.cs" />
+    <Compile Include="Unit\KpcUwpCore\Serialisation\TestSerialiser.cs" />
     <Compile Include="Unit\KpcUwpCore\Wrappers\TestKEasClientDeviceInformation.cs" />
   </ItemGroup>
   <ItemGroup>
