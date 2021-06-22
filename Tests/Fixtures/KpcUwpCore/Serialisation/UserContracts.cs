@@ -19,6 +19,7 @@ namespace KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Serialisation {
 
         [DataContract]
         public sealed class LoginSession {
+
             [DataMember(Name = "id")]
             public string Id { get; set; }
 
@@ -52,6 +53,7 @@ namespace KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Serialisation {
 
         [DataContract]
         public sealed class UserAttributes {
+
             [DataMember(Name = "consent")]
             public bool Consent { get; set; }
 
@@ -77,6 +79,11 @@ namespace KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Serialisation {
 
         [DataContract]
         public sealed class LootList {
+
+            public LootList() {
+                this.Items = new Loot[] { };
+            }
+
             [DataMember(Name = "items")]
             public Loot[] Items { get; set; }
 
@@ -98,6 +105,7 @@ namespace KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Serialisation {
 
         [DataContract]
         public sealed class Loot {
+
             [DataMember(Name = "name")]
             public string Name { get; set; }
 
