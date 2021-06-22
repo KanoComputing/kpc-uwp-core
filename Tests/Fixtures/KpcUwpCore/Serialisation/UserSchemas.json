@@ -1,0 +1,112 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "definitions": {
+    "loot": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "number",
+          "required": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "loot_list": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loot"
+          },
+          "required": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "user_attributes": {
+      "type": "object",
+      "properties": {
+        "consent": {
+          "type": "boolean",
+          "required": true
+        },
+        "time": {
+          "type": "number",
+          "required": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "examples": [
+    {
+      "id": "Something",
+      "attributes": null,
+      "loot": null
+    },
+    {
+      "id": "Unique",
+      "attributes": {
+        "consent": true,
+        "time": 100
+      },
+      "loot": null
+    },
+    {
+      "id": "1234asdf",
+      "attributes": {
+        "consent": false,
+        "time": 1234567890
+      },
+      "loot": {
+        "items": []
+      }
+    },
+    {
+      "id": "MarryHadALittleLamb",
+      "attributes": {
+        "consent": false,
+        "time": 9001
+      },
+      "loot": {
+        "items": [
+          {
+            "name": "Hat",
+            "value": 10
+          },
+          {
+            "name": "Glasses",
+            "value": 15
+          }
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "attributes": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/definitions/user_attributes" }
+      ],
+      "required": true
+    },
+    "loot": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/definitions/loot_list" }
+      ],
+      "required": true
+    }
+  },
+  "additionalProperties": false
+}

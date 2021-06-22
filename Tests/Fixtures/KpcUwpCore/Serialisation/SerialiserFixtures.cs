@@ -7,6 +7,7 @@
 
 
 using System.Collections.Generic;
+using System.IO;
 using static KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Serialisation.UserContracts;
 
 
@@ -40,6 +41,26 @@ namespace KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Serialisation {
                         Consent = true,
                         Time = 100
                     }
+                }
+            };
+            yield return new object[] {
+                "{" +
+                "    \"attributes\": {" +
+                "        \"consent\": false," +
+                "        \"time\": 1234567890" +
+                "    }," +
+                "    \"id\": \"1234asdf\"," +
+                "    \"loot\": {" +
+                "        \"items\": []" +
+                "    }" +
+                "}",
+                new LoginSession {
+                    Id = "1234asdf",
+                    Attributes = new UserAttributes {
+                        Consent = false,
+                        Time = 1234567890
+                    },
+                    Loot = new LootList()
                 }
             };
             yield return new object[] {
@@ -83,5 +104,8 @@ namespace KanoComputing.KpcUwpCore.Tests.Fixtures.KpcUwpCore.Serialisation {
                 }
             };
         }
+
+        public static string JsonSchema =
+            File.ReadAllText("Fixtures/KpcUwpCore/Serialisation/UserSchemas.json");
     }
 }
