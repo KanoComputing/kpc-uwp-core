@@ -1,24 +1,19 @@
 ﻿/**
  * AppUpdater.cs
  *
- * Copyright (c) 2020 Kano Computing Ltd.
+ * Copyright (c) 2020-2021 Kano Computing Ltd.
  * License: https://opensource.org/licenses/MIT
  */
 
 
-using KanoComputing.KpcUwpCore.Assets.Internal;
 using KanoComputing.KpcUwpCore.Network;
-using KanoComputing.KpcUwpCore.Resources;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 using Windows.Services.Store;
 using Windows.Storage;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 
 namespace KanoComputing.KpcUwpCore.AppUpdate {
@@ -29,15 +24,12 @@ namespace KanoComputing.KpcUwpCore.AppUpdate {
         private const string FLAG_UNSET = "0";
 
         private readonly INetworkStatus network = null;
-        private readonly ResourceLoader resources = null;
         private readonly StoreContext storeContext = null;
         private readonly ApplicationDataContainer localSettings = null;
 
-        public AppUpdater(INetworkStatus network = null, IResourcesHelper resources = null) {
+        public AppUpdater(INetworkStatus network = null) {
             this.network = network ?? new NetworkStatus();
-            this.resources = resources == null ?
-                new ResourcesHelper().GetResourceLoader(ResourceMapIds.Strings) :
-                resources.GetResourceLoader(ResourceMapIds.Strings);
+
             this.storeContext = StoreContext.GetDefault();
             this.localSettings = ApplicationData.Current.LocalSettings;
         }
@@ -57,37 +49,6 @@ namespace KanoComputing.KpcUwpCore.AppUpdate {
             bool result = (updatablePackages.Count > 0);
             Debug.WriteLine($"{this.GetType()}: IsUpdateAvailableAsync: {result}");
             return result;
-        }
-
-        /// <summary>
-        /// Check the Microsoft Store if there are mandatory updates available
-        /// in which case show a dialog to the user and ask for permission to
-        /// start downloading and installing these. If the user accepts, the
-        /// app will navigate to the MandatoryUpdate page.
-        /// </summary>
-        /// <remarks>
-        /// Must be called from a UI thread after the app initially navigated
-        /// to its main page and started rendering and proccessing events.
-        /// </remarks>
-        public async Task CheckAndRequestMandatoryUpdateAsync() {
-            bool mandatoryUpdate = await this.IsMandatoryUpdateAvailableAsync();
-            if (!mandatoryUpdate)
-                return;
-
-            ContentDialog updateDialog = new ContentDialog {
-                Title = this.resources.GetString("MandatoryUpdateAvailableDialog/Title"),
-                Content = this.resources.GetString("MandatoryUpdateAvailableDialog/Content"),
-                PrimaryButtonText = this.resources.GetString("MandatoryUpdateAvailableDialog/PrimaryButtonText"),
-                CloseButtonText = this.resources.GetString("MandatoryUpdateAvailableDialog/CloseButtonText")
-            };
-            ContentDialogResult dialogResult = await updateDialog.ShowAsync();
-
-            if (dialogResult == ContentDialogResult.Primary) {
-                Frame rootFrame = Window.Current.Content as Frame;
-                if (rootFrame != null) {
-                    rootFrame.Navigate(typeof(MandatoryUpdate));
-                }
-            }
         }
 
         /// <summary>

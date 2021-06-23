@@ -119,28 +119,15 @@
   <PropertyGroup>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
-  <PropertyGroup Label="MultilingualAppToolkit">
-    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
-    <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
-    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
-    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
-  </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppUpdate\AppUpdater.cs" />
     <Compile Include="AppUpdate\IAppUpdater.cs" />
-    <Compile Include="AppUpdate\MandatoryUpdate.xaml.cs">
-      <DependentUpon>MandatoryUpdate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Assets\Internal\ResourceMapIds.cs" />
     <Compile Include="Display\IWindowManager.cs" />
     <Compile Include="Display\WindowManager.cs" />
     <Compile Include="Features\FeaturePriority.cs" />
     <Compile Include="Features\IFeaturePriority.cs" />
     <Compile Include="Network\INetworkStatus.cs" />
     <Compile Include="Network\NetworkStatus.cs" />
-    <Compile Include="Network\OfflinePage.xaml.cs">
-      <DependentUpon>OfflinePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PackageManagement\AppxManifest.cs" />
     <Compile Include="PackageManagement\IPackageScanner.cs" />
     <Compile Include="PackageManagement\IXmlConfig.cs" />
@@ -183,29 +170,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AppUpdate\MandatoryUpdate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Network\OfflinePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <PRIResource Include="Assets\Strings\en-US\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\KpcUwpCoreContracts\KpcUwpCoreContracts.csproj">
       <Project>{7884cc20-26bc-4dd1-8d11-2d9c2d10719f}</Project>
       <Name>KpcUwpCoreContracts</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PRIResource Include="Assets\Strings\ja-JP\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <XliffResource Include="MultilingualResources\KpcUwpCore.ja-JP.xlf" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
@@ -214,10 +182,6 @@
     <StartupObject />
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.PriResources.targets')" />
-  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets')" Label="MultilingualAppToolkit">
-    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
-  </Target>
   <PropertyGroup>
     <PostBuildEvent>set NugetDir=Package
 
