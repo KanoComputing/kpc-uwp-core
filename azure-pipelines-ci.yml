@@ -1,6 +1,6 @@
 # azure-pipelines-ci.yml
 #
-# Copyright (c) 2021 Kano Computing Ltd.
+# Copyright (c) 2020-2021 Kano Computing Ltd.
 #
 # Continuous integration pipeline for the project.
 
@@ -16,8 +16,8 @@ pr:
     - '*'
 
 variables:
-  major: 4
-  minor: 5
+  major: 5
+  minor: 0
   patch: $[counter(format('{0}.{1}', variables['major'], variables['minor']), 0)]
 
 # Customise the Build.BuildNumber variable with the version of the build.
