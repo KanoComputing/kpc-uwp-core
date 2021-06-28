@@ -42,8 +42,8 @@ namespace KanoComputing.KpcUwpCore.Features {
             IKPackage package = null) {
 
             this.priorityList = priorityList;
-            this.scanner = scanner;
-            this.package = package;
+            this.scanner = scanner ?? new PackageScanner();
+            this.package = package ?? new KPackage();
         }
 
         /// <summary>
