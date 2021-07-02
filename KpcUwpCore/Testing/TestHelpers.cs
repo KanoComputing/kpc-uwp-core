@@ -39,7 +39,7 @@ namespace KanoComputing.KpcUwpCore.Testing {
         }
 
         public static void AssertJObjectContains<T>(JObject obj, string key, T prop, bool isRequired = false) {
-            if (!obj.ContainsKey(key)) {
+            if (!obj.TryGetValue(key, out JToken value)) {
                 Assert.IsFalse(isRequired, $"The key {key} is required but not present in the JObject");
                 Assert.AreEqual(default, prop, $"{key} was not in the JObject but wasn't default in the object");
                 return;
