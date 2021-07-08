@@ -122,6 +122,8 @@
   <ItemGroup>
     <Compile Include="AppUpdate\AppUpdater.cs" />
     <Compile Include="AppUpdate\IAppUpdater.cs" />
+    <Compile Include="BackgroundTasks\ITaskRegister.cs" />
+    <Compile Include="BackgroundTasks\TaskRegister.cs" />
     <Compile Include="Display\IWindowManager.cs" />
     <Compile Include="Display\WindowManager.cs" />
     <Compile Include="Features\FeaturePriority.cs" />
