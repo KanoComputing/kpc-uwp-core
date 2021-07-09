@@ -13,5 +13,8 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
         string GetDeviceId();
         string GetUserId();
         string GetSessionId();
+
+        string RefreshAppSessionId();
+        string GetAppSessionId();
     }
 }

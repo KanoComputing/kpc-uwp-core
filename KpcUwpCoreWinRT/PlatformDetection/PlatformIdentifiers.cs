@@ -39,5 +39,9 @@ namespace KanoComputing.KpcUwpCore.WinRT.PlatformDetection {
         public string getSessionId() {
             return this.platformIds.GetSessionId();
         }
+
+        public string getAppSessionId() {
+            return this.platformIds.GetAppSessionId();
+        }
     }
 }

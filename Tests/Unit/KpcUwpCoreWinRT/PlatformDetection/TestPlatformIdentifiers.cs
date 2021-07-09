@@ -58,5 +58,20 @@ namespace KanoComputing.KpcUwpCore.Tests.Unit.KpcUwpCoreWinRT.PlatformDetection 
                 expectedResult, resultWinRT,
                 "WinRT function not wrapping main one correctly");
         }
+
+        [TestMethod]
+        public void TestAppSessionId() {
+            KanoComputing.KpcUwpCore.PlatformDetection.IPlatformIdentifiers ids =
+                new KanoComputing.KpcUwpCore.PlatformDetection.PlatformIdentifiers();
+            KanoComputing.KpcUwpCore.WinRT.PlatformDetection.IPlatformIdentifiers idsWinRT =
+                new KanoComputing.KpcUwpCore.WinRT.PlatformDetection.PlatformIdentifiers();
+
+            string expectedResult = ids.GetAppSessionId();
+            string resultWinRT = idsWinRT.getAppSessionId();
+
+            Assert.AreEqual(
+                expectedResult, resultWinRT,
+                "WinRT function not wrapping main one correctly");
+        }
     }
 }
