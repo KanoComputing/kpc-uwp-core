@@ -21,5 +21,6 @@ namespace KanoComputing.KpcUwpCore.WinRT.PlatformDetection {
         string getDeviceId();
         string getUserId();
         string getSessionId();
+        string getAppSessionId();
     }
 }

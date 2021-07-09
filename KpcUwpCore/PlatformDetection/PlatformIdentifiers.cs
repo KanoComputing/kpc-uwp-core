@@ -12,12 +12,15 @@ using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
 using Windows.Security.Cryptography;
+using Windows.Storage;
 using Windows.System.Profile;
 
 
 namespace KanoComputing.KpcUwpCore.PlatformDetection {
 
     public class PlatformIdentifiers : IPlatformIdentifiers {
+
+        internal const string APP_SESSION_KEY = "AppSessionId";
 
         /// <summary>
         /// Returns an SID specific to the device and publisher of the calling app.
@@ -45,6 +48,38 @@ namespace KanoComputing.KpcUwpCore.PlatformDetection {
         public string GetSessionId() {
             return Hash(
                 WindowsLogonSession.GetSid());
+        }
+
+        /// <summary>
+        /// Generates a new application session ID and returns it.
+        /// </summary>
+        public string RefreshAppSessionId() {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            string token = GenerateUniqueToken();
+
+            if (localSettings.Values.ContainsKey(APP_SESSION_KEY)) {
+                localSettings.Values.Remove(APP_SESSION_KEY);
+            }
+            localSettings.Values.Add(APP_SESSION_KEY, token);
+            return token;
+        }
+
+        /// <summary>
+        /// Returns the previously generated application session ID.
+        /// One will be created if it never was never refreshed.
+        /// </summary>
+        public string GetAppSessionId() {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+            if (localSettings.Values.ContainsKey(APP_SESSION_KEY)) {
+                return localSettings.Values[APP_SESSION_KEY] as string;
+            }
+            return this.RefreshAppSessionId();
+        }
+
+        private static string GenerateUniqueToken() {
+            // Remove dashes to match implementation in kbc-utils.
+            return Guid.NewGuid().ToString().Replace("-", "");
         }
 
         private static string Hash(string data) {
